@@ -1,4 +1,4 @@
-alert(hola!);
+//alert(hola!);
 
 /*
     Rotate by Day of Week: Use HTML/CSS & JavaScript to create a single page
@@ -22,7 +22,23 @@ alert(hola!);
     for each day of the week.  All of the above must occur within one page.
 */
 
-let myDate = New Date();
+let myDate = new Date();
 let today = myDate.getDay();
+let coffee = "";
+switch(today){
+    case 1:
+        today = "Monday";
+        coffee = {
+            color:"pink",
+            name:"Bubble Tea",
+            pic:"bubble-tea.jpg",
+            alt:"A picture of a bubble tea",
+            day:"Monday",
+            desc:`I like me some bubble tea!`
+        };
+    break;
 
-console.log(today);
+    default:
+        alert("something went wrong!");
+}
+console.log(coffee);
