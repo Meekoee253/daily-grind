@@ -22,6 +22,14 @@
     for each day of the week.  All of the above must occur within one page.
 */
 
+function coffeeTemplate(coffee){
+    return `<p>
+        <img src="images/${coffee.pic}" alt="${coffee.alt}" id="coffee" />
+    <strong>${coffee.day}'s Coffee Special:</strong> ${coffee.day}'s daily coffee special is <strong>${coffee.name}</strong>, ${coffee.desc}
+    </p>`;
+}
+
+
 let myDate = new Date();
 let today = myDate.getDay();
 let coffee = "";
@@ -38,7 +46,23 @@ switch(today){
         };
     break;
 
+    case 2:
+        today = "Tuesday";
+        coffee = {
+            color:"brown",
+            name:"Caramel Latte",
+            pic:"caramel-latte.jpg",
+            alt:"A picture of a caramel latte",
+            day:"Tuesday",
+            desc:`It's cold, so a caramel latte sounds good right now`
+        };
+    break;
+
     default:
         alert("something went wrong!");
 }
+
+
 console.log(coffee);
+
+document.getElementById("coffee-template").innerHTML = coffeeTemplate(coffee);
