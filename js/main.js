@@ -33,7 +33,36 @@ function coffeeTemplate(coffee){
 let myDate = new Date();
 let today = myDate.getDay();
 let coffee = "";
+
+//use location object to access querystring (address bar)
+const queryString = window.location.search;
+    
+//output to console    
+console.log(queryString);
+    
+//separate querystring parameters
+const urlParams = new URLSearchParams(queryString);
+
+if(urlParams.has("day")){//from querystring
+    today = urlParams.get("day");
+ } 
+
+ //convert the string to an integer
+ today = parseInt(today);
+
 switch(today){
+    case 0:
+        today = "Sunday";
+        coffee = {
+            color:"blue",
+            name:"Drip",
+            pic:"drip.jpg",
+            alt:"A picture of drip coffee",
+            day:"Sunday",
+            desc:`It's always a good time for some drip coffee!`
+        };
+    break;
+
     case 1:
         today = "Monday";
         coffee = {
@@ -58,11 +87,60 @@ switch(today){
         };
     break;
 
-    default:
-        alert("something went wrong!");
-}
+    case 3:
+        today = "Wednesday";
+        coffee = {
+            color:"black",
+            name:"Cold Brew",
+            pic:"cold-brew.jpg",
+            alt:"A picture of a cold brew",
+            day:"Wednesday",
+            desc:`I need some serious caffeine! Give me a cold brew!`
+        };
+    break;
+    
 
+    case 4:
+         today = "Thursday";
+         coffee = {
+            color:"red",
+             name:"Frappaccino",
+             pic:"frappaccino.jpg",
+             alt:"A picture of a nice frappaccino",
+             day:"Thursday",
+             desc:`It's Frap time!`
+     };
+    break;
+    case 5:
+        today = "Friday";
+        coffee = {
+            color:"Green",
+            name:"Mocha",
+            pic:"mocha.jpg",
+            alt:"A picture of a nice warm mocha",
+            day:"Friday",
+            desc:`A warm mocha warms the soul!`
+        };
+    break;
+    case 6:
+        today = "Saturday";
+        coffee = {
+            color:"purple",
+            name:"Pumpkin Spice Latte",
+            pic:"pumpkin-spice-latte.jpg",
+            alt:"A picture of pumpkin spice lattes",
+            day:"Saturday",
+            desc:`Tis' the season for pumpkin spice lattes!`
+        };
+    break;
+
+    default:
+    /*   alert("something went wrong!"); */
+}
 
 console.log(coffee);
 
 document.getElementById("coffee-template").innerHTML = coffeeTemplate(coffee);
+
+ //Here we are changing the background color of the html tag
+ document.querySelector("html").style.backgroundColor = coffee.color;
